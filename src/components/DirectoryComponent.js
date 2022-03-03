@@ -31,7 +31,7 @@ class Directory extends Component {
 
 
     render() {
-        const directory = this.state.campsites.map(campsite => {
+        const directory = this.props.campsites.map(campsite => {
             return (
                 <div key={campsite.id} className="col-md-5 m-1">
                     <Card onClick={() => this.onCampsiteSelect(campsite)}>
