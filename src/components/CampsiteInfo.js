@@ -4,13 +4,6 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'rea
 
 class CampsiteInfo extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedCampsite: {}
-        };
-    }
-
     renderCampsite(campsite) {
         return (
             <div className="col-md-5 m-1">
@@ -26,10 +19,10 @@ class CampsiteInfo extends Component {
     }
 
     render() {
-        if (this.selectedCampsite === 0) {
+        if (this.props.selectedCampsite) {
             return (
                 <div className="row">
-                    {this.renderCampsite(this.selectedCampsite)}
+                    {this.renderCampsite(this.props.selectedCampsite)}
                 </div>
             )
         } else {
