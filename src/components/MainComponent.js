@@ -8,29 +8,28 @@ import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+
+const mapStateToProps = (state) => {
+  return {
+    campsites: state.campsites,
+    comments: state.comments,
+    partners: state.partners,
+    promotions: state.promotions,
+  };
+};
 
 class Main extends Component {
   render() {
-    const mapStateToProps = (state) => {
-      return {
-        campsites: state.campsites,
-        comments: state.comments,
-        partners: state.partners,
-        promotions: state.promotions,
-      };
-    };
-
     const HomePage = () => {
       return (
         <Home
           campsite={
-            this.state.campsites.filter((campsite) => campsite.featured)[0]
+            this.props.campsites.filter((campsite) => campsite.featured)[0]
           }
           promotion={
-            this.state.promotions.filter((promotion) => promotion.featured)[0]
+            this.props.promotions.filter((promotion) => promotion.featured)[0]
           }
-          partner={this.state.partners.filter((partner) => partner.featured)[0]}
+          partner={this.props.partners.filter((partner) => partner.featured)[0]}
         />
       );
     };
